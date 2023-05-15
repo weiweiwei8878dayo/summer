@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>検索エンジン</title>
+  <script src="search.js"></script>
+</head>
+<body>
+  <h1>検索エンジン</h1>
+  <input type="text" id="searchInput" placeholder="キーワードを入力してください">
+  <button onclick="performSearch()">検索</button>
+  <div id="searchResults"></div>
+
+  <script>
+    function performSearch() {
+      var searchQuery = document.getElementById("searchInput").value;
+      var results = search(searchQuery);
+
+      var resultsContainer = document.getElementById("searchResults");
+      resultsContainer.innerHTML = "";
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = "該当する結果はありません。";
+      } else {
+        for (var i = 0; i < results.length; i++) {
+          var result = document.createElement("p");
+          result.textContent = results[i];
+          resultsContainer.appendChild(result);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
